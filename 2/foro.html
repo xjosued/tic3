@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoja de Vida - Karen Zuña</title>
+    <style>
+        /* Estilos generales con tonos pastel y cálidos */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right bottom, #ffdde1, #fcfcfc); /* Gradiente suave de rosa claro a blanco casi */
+            color: #4a4a4a; /* Texto gris oscuro suave */
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 95%;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 25px; /* Bordes aún más redondeados */
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1); /* Sombra más suave y extendida */
+            padding: 35px 45px; /* Más padding interno */
+            box-sizing: border-box;
+        }
+
+        /* Encabezado */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid rgba(255, 220, 220, 0.5); /* Línea divisoria rosa muy clara */
+        }
+
+        .profile-pic {
+            width: 170px; /* Un poco más grande */
+            height: 170px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid #ffcccb; /* Rosa pastel más pronunciado */
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Sombra suave */
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        .profile-pic:hover {
+            transform: scale(1.08); /* Efecto hover más notable */
+        }
+
+        h1 {
+            color: #e66767; /* Rosa fuerte y cálido */
+            margin-top: 15px;
+            font-size: 3.2em; /* Tamaño de fuente más grande */
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.08); /* Sombra de texto sutil */
+        }
+
+        .subtitle {
+            font-size: 1.25em; /* Ligeramente más grande */
+            color: #6a6a6a; /* Gris medio */
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .location-age {
+            font-size: 1.05em;
+            color: #888; /* Gris más claro */
+        }
+
+        /* Secciones */
+        .section {
+            margin-bottom: 35px; /* Más espacio entre secciones */
+            padding-top: 30px;
+            border-top: 1px dashed #f0e0e0; /* Línea discontinua rosa muy clara */
+        }
+        .section:first-of-type {
+            border-top: none;
+        }
+
+        /* Estilo para los títulos de sección con efecto "rollito" - Colores más suaves */
+        .section-title {
+            background: linear-gradient(to right, #ffebee, #fff8f9); /* Gradiente rosa muy claro para el fondo */
+            color: #c06c84; /* Rosa ciruela suave para el texto del título */
+            padding: 14px 28px; /* Más padding */
+            border-radius: 35px; /* Bordes muy redondeados */
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.07); /* Sombra suave */
+            display: inline-flex;
+            align-items: center;
+            font-size: 1.9em; /* Tamaño de fuente más grande */
+            font-weight: 600;
+            text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.03);
+            margin-bottom: 30px; /* Ajuste del margen inferior */
+        }
+        .section-title img {
+            margin-right: 15px; /* Más margen a la derecha */
+            width: 32px; /* Iconos más grandes */
+            height: 32px;
+            /* Aplicar filtro para cambiar el color del icono a un tono que combine con el rosa */
+            filter: invert(40%) sepia(20%) saturate(1500%) hue-rotate(330deg) brightness(80%) contrast(90%); /* Tono de rosa/ciruela para los iconos */
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            margin-bottom: 12px; /* Más espacio entre ítems de lista */
+            padding-left: 30px; /* Más padding izquierdo */
+            position: relative;
+            font-size: 1.15em; /* Un poco más grande */
+            color: #555;
+        }
+
+        ul li::before {
+            content: '🌸'; /* Un florecita para los puntos */
+            color: #e66767; /* Color de la florecita */
+            font-size: 1em; /* Ajuste para que se vea bien */
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .education-details strong {
+            color: #4a4a4a;
+            font-size: 1.2em;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .education-details p {
+            margin: 0 0 6px 0;
+            color: #777;
+            font-size: 1em;
+        }
+
+        /* Habilidades e Intereses - Grid de elementos */
+        .skills-grid, .interests-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px; /* Más espacio entre los elementos */
+            margin-top: 15px;
+        }
+
+        .skill-item, .interest-item {
+            background: linear-gradient(to right, #ffc0cb, #ffe4e1); /* Gradiente de rosa a rosa-salmón */
+            color: #884a56; /* Rosa oscuro para el texto */
+            padding: 12px 22px;
+            border-radius: 30px; /* Más redondeado */
+            font-size: 1em; /* Tamaño de fuente ajustado */
+            font-weight: 600;
+            white-space: nowrap;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .skill-item:hover, .interest-item:hover {
+            transform: translateY(-4px); /* Más movimiento */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, #ffe4e1, #ffc0cb); /* Invertir gradiente al pasar el mouse */
+        }
+
+        /* Galería de fotos - Estilos para 3 fotos circulares y centradas */
+        .gallery {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 35px; /* Más espacio entre las fotos */
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .gallery-item {
+            width: 190px; /* Un poco más grande */
+            height: 190px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); /* Sombra más suave y extendida */
+            background-color: #fff;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 4px solid #f8e0e0; /* Borde rosa muy claro */
+        }
+        .gallery-item:hover {
+            transform: translateY(-7px); /* Más movimiento */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-color: #ffc0cb; /* Borde rosa al hover */
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Media Queries para adaptabilidad (diseño responsive) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+            h1 {
+                font-size: 2.8em;
+            }
+            .section-title {
+                font-size: 1.7em;
+                padding: 12px 22px;
+            }
+            .profile-pic {
+                width: 140px;
+                height: 140px;
+            }
+            .gallery-item {
+                width: 160px;
+                height: 160px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            .section-title {
+                font-size: 1.5em;
+                padding: 10px 18px;
+                border-radius: 30px;
+            }
+            .skill-item, .interest-item {
+                padding: 10px 18px;
+                font-size: 0.9em;
+            }
+            .gallery-item {
+                width: 130px;
+                height: 130px;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="kz.jpg" alt="Foto de Perfil de Karen Zuña" class="profile-pic">
+            <h1>Karen Zuña</h1>
+            <p class="subtitle">Estudiante de Medicina Veterinaria | Apasionada por la fauna silvestre y el bienestar animal</p>
+            <p class="location-age">Ambato, Ecuador</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                <img src="https://img.icons8.com/ios-filled/30/star.png" alt="Icono de Estrella">
+                Formación Académica
+            </h2>
+            <div class="education-details">
+                <p><strong>Medicina Veterinaria</strong></p>
+                <p>Universidad Regional Autónoma de los Andes (UNIANDES) — Ambato, Ecuador</p>
+                <ul>
+                    <li>Formación integral en ciencias básicas veterinarias: anatomía, fisiología, histología y bioquímica.</li>
+                    <li>Participación activa en prácticas de laboratorio, observación clínica y actividades extracurriculares.</li>
+                    <li>Interés enfocado en el bienestar animal, medicina preventiva y conservación de especies.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                <img src="https://img.icons8.com/ios-filled/30/target.png" alt="Icono de Objetivo Profesional">
+                Objetivo Profesional
+            </h2>
+            <ul>
+                <li>Como futura médica veterinaria, mi propósito es especializarme en el cuidado y manejo clínico de pequeñas especies, equinos o vida silvestre.</li>
+                <li>Aspiro a contribuir al bienestar animal, la salud pública y la conservación de la biodiversidad, aplicando mis conocimientos científicos con ética, compromiso y vocación de servicio.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                <img src="https://img.icons8.com/ios-filled/30/flask.png" alt="Icono de Experiencia Académica">
+                Experiencia Académica y Prácticas
+            </h2>
+            <p><strong>Prácticas de laboratorio – UNIANDES</strong></p>
+            <ul>
+                <li>Manejo de microscopía óptica y técnicas de tinción (hematoxilina-eosina, azul de metileno).</li>
+                <li>Análisis histológico de tejidos animales.</li>
+                <li>Aplicación rigurosa de normas de bioseguridad en entornos clínicos y de laboratorio.</li>
+            </ul>
+            <p><strong>Proyectos académicos destacados</strong></p>
+            <ul>
+                <li>Observación comparativa de células bucales y células de cebolla bajo microscopio.</li>
+                <li>Análisis estructural y funcional de epitelios en distintos órganos.</li>
+                <li>Cálculo de presión osmótica mediante la ecuación de Van’t Hoff.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                <img src="https://img.icons8.com/ios-filled/30/brain.png" alt="Icono de Habilidades">
+                Habilidades
+            </h2>
+            <div class="skills-grid">
+                <span class="skill-item">Observación y análisis histológico</span>
+                <span class="skill-item">Manejo de equipos de laboratorio y protocolos de bioseguridad</span>
+                <span class="skill-item">Redacción científica clara y estructurada</span>
+                <span class="skill-item">Conocimientos sólidos en fisiología sistémica y endocrinología</span>
+                <span class="skill-item">Adaptabilidad para sintetizar información compleja en formatos accesibles</span>
+                <span class="skill-item">Dominio del formato Vancouver para referencias bibliográficas</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                <img src="https://img.icons8.com/ios-filled/30/star.png" alt="Icono de Intereses">
+                Intereses
+            </h2>
+            <div class="interests-grid">
+                <span class="interest-item">Clínica y cirugía de animales de compañía</span>
+                <span class="interest-item">Medicina y rehabilitación de equinos</span>
+                <span class="interest-item">Conservación y manejo de fauna silvestre</span>
+                <span class="interest-item">Investigación en fisiología animal y salud pública veterinaria</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                <img src="https://img.icons8.com/ios-filled/30/camera.png" alt="Icono de Galería">
+                Galería de fotos
+            </h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="1.jpg" alt="Foto 1 de la galería">
+                </div>
+                <div class="gallery-item">
+                    <img src="2.jpg" alt="Foto 2 de la galería">
+                </div>
+                <div class="gallery-item">
+                    <img src="3.jpg" alt="Foto 3 de la galería">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
